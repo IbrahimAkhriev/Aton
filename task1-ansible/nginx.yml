@@ -1,0 +1,45 @@
+- name: Install and configure nginx
+  hosts: localhost
+  become: true
+  vars:
+    nginx_port: 80
+    nginx_root: /var/www/html
+  tasks:
+    - name: Install nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Deploy nginx config
+      template:
+        src: templates/nginx.conf.j2
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: 0644
+      notify: Restart nginx
+
+    - name: Copy index.html
+      copy:
+        src: files/index.html
+        dest: "{{ nginx_root }}/index.html"
+
+    - name: Ensure nginx is running
+      systemd:
+        name: nginx
+        state: started
+        enabled: true
+
+    - name: Wait for nginx to be available
+      wait_for:
+        port: "{{ nginx_port }}"
+        host: "127.0.0.1"
+        timeout: 10
+
+  handlers:
+    - name: Restart nginx
+      systemd:
+        name: nginx
+        state: restarted
+
