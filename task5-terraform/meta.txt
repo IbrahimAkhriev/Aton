@@ -1,0 +1,8 @@
+#cloud-config
+users:
+  - name: devops
+    groups: sudo
+    shell: /bin/bash
+    sudo: 'ALL=(ALL) NOPASSWD:ALL'
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCve3UP7lGKj6j1Cb1oJ/Sao0XySj+DY8SmfzVkRpOVky1NnCHAOsooJHbtAawarKk5Ps5bsRecZtWwAn6T5pslLcvuZHWaX8c9juU/mMf9xxR/nlzNfFOXOrpCAC4uYyTgUGOGRN8uIp4kR8HU0lSxlfKaRmEee7uhBowY6yI5U4vW9SdCTsQ6Wj8LQ8ebQ2iqDnMa9ZBWs4IpKQWwN6/qTo6jzzA7VHKqq1AWX/wMWUpGJNOlnb0jI1wSJ2xkMUBYlPvQr9dPC/OMgYhgJ097V4zZVmwEDFUf7CTnnamUAXw75zXdh/6oW4zffvMnqrWYdJKEEFsZyzWWJJRIIazDDMYswrG/YniR66kirBLgw84OdRBeP3W2w36RRAalK7n4d+H3PLmY4IaQtvfF1D5L2cLE/Wodnc6GaCYe9Up3aSD1t+ZwnOCJarrCrHLQerVvf9at69q038VhOaqB76da+Omyu2AK39keaIldF7WK9WeMuprU3KxTEl4TBOgJksk= tracyger@DESKTOP-F8ENJIK
